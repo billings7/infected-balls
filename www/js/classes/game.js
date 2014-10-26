@@ -42,6 +42,8 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
     this.noOfInfections = noOfInfections;
 
     for (var i = 0; i < noOfBalls; i++) {
+        ballTries = 0;
+
         while(!this.doesBallFit(ball) && (ballTries < ballTryLimit)) {
             ballTries++;
             ball = new Ball({

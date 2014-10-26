@@ -113,6 +113,7 @@ function infectBall(self, body) {
     body.ball.infect();
     self.infectBody(body);
     self.addInfected();
+            $('#infections').html(this.infectionCount);
 
     if (self.infectionCount === self.balls.length) {
         // Game over - all balls infected!

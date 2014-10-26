@@ -1,13 +1,18 @@
 body {
     background: #333333;
     color: #FAFAFA;
-    font-family: Verdana;
-    font-weight: bold;
     margin: 0;
     overflow: hidden;
     font-family: 'Sigmar One', cursive;
-    background-color: #333333;
-    color: #ffffff;
+}
+
+#canvas-div {
+    position: absolute;
+    top: 0;
+    right:0;
+    left:0;
+    bottom:0;
+
 }
 
 canvas {
@@ -60,6 +65,7 @@ canvas {
 #start {
     height: 50px;
     width: 100px;
+    font-family: 'Sigmar One', cursive;
 }
 
 #good-end {

@@ -87,24 +87,12 @@ Game.prototype.start = function() {
 
 Game.prototype.ballCollision = function(bodyA, bodyB) {
     if(bodyA.ball && bodyB.ball) {
-        if (bodyA.ball.infected) {
-            bodyB.ball.infect();
-            this.infectBody(bodyB);
-            this.infectionCount++;
-            if (this.infectionCount === this.balls.length) {
-                // Game over - all balls infected!
-
-            }
+        if (bodyA.ball.infected && !bodyB.ball.infected) {
+            this.infectBall(bodyB);
         }
 
-        if (bodyB.ball.infected) {
-            bodyA.ball.infect();
-            this.infectBody(bodyA);
-            this.infectionCount++;
-            if (this.infectionCount === this.balls.length) {
-                // Game over - all balls infected!
-
-            }
+        if (bodyB.ball.infected && !bodyA.ball.infected) {
+            this.infectBall(bodyA);
         }
     }
 };
@@ -119,9 +107,9 @@ Game.prototype.infectBall = function(body) {
             this.noOfInfections--;
             this.infectionCount++;
 
-            if (this.infectionCount === self.balls.length) {
+            if (this.infectionCount === this.balls.length) {
                 // Game over - all balls infected!
-
+                this.endGame();
             }
         }
     }
@@ -132,6 +120,7 @@ Game.prototype.infectBody = function(body) {
     body.view = null;
 };
 
+// TODO: Call this
 Game.prototype.update = function() {
     if(new Date() >= this.endTime) {
         this.endGame();
@@ -140,6 +129,9 @@ Game.prototype.update = function() {
     }
 };
 
+// TODO: Display infections remaining count
+
+// TODO: Use this to display counter
 Game.prototype.timeLeft = function() {
     return (this.endTime - new Date()) / 1000;
 };
@@ -149,6 +141,14 @@ Game.prototype.endGame = function() {
     // Fire callbacks, render end screen yadda yadda
     if (this.started) {
         this.started = false;
-        console.log('game over..');
+
+        // TODO: Reset physics system
+        if(this.infectionCount < this.balls.length) {
+            // Bad end
+            $('#bad-end').toggle();
+        } else {
+            // Good end
+            $('#good-end').toggle();
+        }
     }
 };

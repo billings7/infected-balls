@@ -11,7 +11,9 @@
         <title>Hello World</title>
     </head>
     <body>
-        <canvas id="viewport"></canvas>
+        <div id="canvas-div" style="overflow: hidden;">
+            <canvas id="viewport" style="position:fixed;"></canvas>
+        </div>
         <div id="HUD">
             <div class="infections">Infections: <span id="infections">0</span></div>
             <div class="timeRemaining">Time Remaining: <span id="timeRemaining">0</span></div>
@@ -22,6 +24,8 @@
             <div id="timeRemainingOverlay"></div>
             <div id="endOfGameOverlay"></div>
         </div>
+        <div id="bad-end">Spread faster next time.</div>
+        <div id="good-end">You win at infecting!</div>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>

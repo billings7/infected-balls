@@ -132,7 +132,6 @@ Game.prototype.infectBody = function(body) {
     body.view = null;
 };
 
-// TODO: Call this
 Game.prototype.update = function() {
     if(new Date() >= this.endTime) {
         this.endGame();
@@ -141,7 +140,6 @@ Game.prototype.update = function() {
     }
 };
 
-// TODO: Use this
 Game.prototype.timeLeft = function() {
     return (this.endTime - new Date()) / 1000;
 };

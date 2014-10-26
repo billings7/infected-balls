@@ -68,6 +68,7 @@ PhysicsSystem.fromGame = function(game) {
 
         PhysicsSystem.world.on('step', function () {
             PhysicsSystem.world.render();
+            game.update();
         });
 
         viewport.click(function (e) {

@@ -42,6 +42,8 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
     this.noOfInfections = noOfInfections;
 
     for (var i = 0; i < noOfBalls; i++) {
+        ballTries = 0;
+
         while(!this.doesBallFit(ball) && (ballTries < ballTryLimit)) {
             ballTries++;
             ball = new Ball({
@@ -134,6 +136,8 @@ Game.prototype.infectBody = function(body) {
 Game.prototype.update = function() {
     if(new Date() >= this.endTime) {
         this.endGame();
+    } else {
+        $('#timeRemaining').text(Math.round(this.timeLeft()));
     }
 };
 
@@ -145,5 +149,8 @@ Game.prototype.timeLeft = function() {
 // TODO: End the game
 Game.prototype.endGame = function() {
     // Fire callbacks, render end screen yadda yadda
-
+    if (this.started) {
+        this.started = false;
+        console.log('game over..');
+    }
 };

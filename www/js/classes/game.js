@@ -9,6 +9,9 @@ function Game(viewport) {
     this.width = viewport.width();
     this.height = viewport.height();
 
+    this.boundsWidth = $(window).width();
+    this.boundsHeight = $(window).height();
+
     this.balls = [];
     this.infectionCount = 0;
     this.started = false;
@@ -47,8 +50,8 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
         while(!this.doesBallFit(ball) && (ballTries < ballTryLimit)) {
             ballTries++;
             ball = new Ball({
-                    x: this.width * Utility.random(0, 1),
-                    y: this.height * Utility.random(0, 1)
+                    x: this.boundsWidth * Utility.random(0, 1),
+                    y: this.boundsHeight * Utility.random(0, 1)
                 }, {
                     x: Utility.random(0, 1),
                     y: Utility.random(0, 1)

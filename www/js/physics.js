@@ -85,6 +85,6 @@ PhysicsSystem.fromGame = function(game) {
     });
 
     game.onEnd(function() {
-        // TODO?
+        Physics.util.ticker.stop();
     });
 };

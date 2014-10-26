@@ -17,6 +17,7 @@ PhysicsSystem.fromGame = function(game) {
         PhysicsSystem.bodies.forEach(function(body) {
             PhysicsSystem.world.remove(body);
         });
+        PhysicsSystem.bodies = [];
 
         PhysicsSystem.world.add(self.renderer);
 
@@ -94,6 +95,7 @@ PhysicsSystem.fromGame = function(game) {
 
     game.onEnd(function() {
         Physics.util.ticker.stop();
+        $('#start span').text('Replay');
         $('.start').show();
     });
 };

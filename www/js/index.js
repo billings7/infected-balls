@@ -17,7 +17,7 @@
 
     $('#start').click(function() {
         if(!firstGame) {
-            game.init(10, 30, 3);
+            game.init(10, 12, 2);
         }
         firstGame = false;
         game.start();

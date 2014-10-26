@@ -2,8 +2,6 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: 'Sigmar One', cursive;
-    background-color: #333333;
-    color: #ffffff;
 }
 
 canvas {

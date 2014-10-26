@@ -136,6 +136,8 @@ Game.prototype.infectBody = function(body) {
 Game.prototype.update = function() {
     if(new Date() >= this.endTime) {
         this.endGame();
+    } else {
+        $('#timeRemaining').text(Math.round(this.timeLeft()));
     }
 };
 
@@ -147,5 +149,8 @@ Game.prototype.timeLeft = function() {
 // TODO: End the game
 Game.prototype.endGame = function() {
     // Fire callbacks, render end screen yadda yadda
-
+    if (this.started) {
+        this.started = false;
+        console.log('game over..');
+    }
 };

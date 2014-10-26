@@ -9,6 +9,9 @@ function Game(viewport) {
     this.width = viewport.width();
     this.height = viewport.height();
 
+    this.boundsWidth = $(window).width();
+    this.boundsHeight = $(window).height();
+
     this.balls = [];
     this.infectionCount = 0;
     this.started = false;
@@ -40,6 +43,7 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
 
     this.timeLimit = timeLimit;
     this.noOfInfections = noOfInfections;
+    $('#infectionsLeft').text(this.noOfInfections);
 
     for (var i = 0; i < noOfBalls; i++) {
         ballTries = 0;
@@ -47,11 +51,11 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
         while(!this.doesBallFit(ball) && (ballTries < ballTryLimit)) {
             ballTries++;
             ball = new Ball({
-                    x: this.width * Utility.random(0, 1),
-                    y: this.height * Utility.random(0, 1)
+                    x: this.boundsWidth * Utility.random(0, 1),
+                    y: this.boundsHeight * Utility.random(0, 1)
                 }, {
-                    x: Utility.random(0, 1),
-                    y: Utility.random(0, 1)
+                    x: Utility.random(0, 0.5),
+                    y: Utility.random(0, 0.5)
                 }, Utility.random(0.3, 0.7),
                 15);
         }
@@ -88,11 +92,11 @@ Game.prototype.start = function() {
 Game.prototype.ballCollision = function(bodyA, bodyB) {
     if(bodyA.ball && bodyB.ball) {
         if (bodyA.ball.infected && !bodyB.ball.infected) {
-            this.infectBall(bodyB);
+            infectBall(this, bodyB);
         }
 
         if (bodyB.ball.infected && !bodyA.ball.infected) {
-            this.infectBall(bodyA);
+            infectBall(this, bodyA);
         }
     }
 };
@@ -102,19 +106,23 @@ Game.prototype.infectBall = function(body) {
 
     if (this.noOfInfections > 0) {
         if (!body.ball.infected) {
-            body.ball.infect();
-            this.infectBody(body);
-            this.noOfInfections--;
-            this.infectionCount++;
-            $('#infections').html(this.infectionCount);
-
-            if (this.infectionCount === this.balls.length) {
-                // Game over - all balls infected!
-                this.endGame();
-            }
+            this.useInfection();
+            infectBall(this, body);
         }
     }
-};
+}
+
+function infectBall(self, body) {
+    body.ball.infect();
+    self.infectBody(body);
+    self.addInfected();
+            $('#infections').html(this.infectionCount);
+
+    if (self.infectionCount === self.balls.length) {
+        // Game over - all balls infected!
+        self.endGame();
+    }
+}
 
 Game.prototype.infectBody = function(body) {
     var infectedSprite = new Image();
@@ -123,11 +131,21 @@ Game.prototype.infectBody = function(body) {
     body.view = infectedSprite;
 };
 
+Game.prototype.useInfection = function() {
+    this.noOfInfections--;
+    $('#infectionsLeft').text(this.noOfInfections);
+};
+
+Game.prototype.addInfected = function() {
+    this.infectionCount++;
+    $('#infections').text(this.infectionCount);
+};
+
 Game.prototype.update = function() {
     if(new Date() >= this.endTime) {
         this.endGame();
     } else {
-        $('#timeRemaining').text(Math.round(this.timeLeft()));
+        $('#timeRemaining').text(this.timeLeft().toFixed(3));
     }
 };
 
@@ -135,19 +153,21 @@ Game.prototype.timeLeft = function() {
     return (this.endTime - new Date()) / 1000;
 };
 
-// TODO: End the game
 Game.prototype.endGame = function() {
     // Fire callbacks, render end screen yadda yadda
     if (this.started) {
         this.started = false;
 
-        // TODO: Reset physics system
         if(this.infectionCount < this.balls.length) {
             // Bad end
-            $('#bad-end').toggle();
+            $('#bad-end').css({visibility: 'visible'});
         } else {
             // Good end
-            $('#good-end').toggle();
+            $('#good-end').css({visibility: 'visible'});
         }
+
+        this.endFns.forEach(function (fn) {
+            fn(self.viewport);
+        });
     }
 };

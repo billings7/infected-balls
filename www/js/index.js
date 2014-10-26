@@ -17,5 +17,6 @@
 
     $('#start').click(function() {
         game.start();
+        $('#start').hide();
     });
 })();

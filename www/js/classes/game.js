@@ -91,6 +91,7 @@ Game.prototype.ballCollision = function(bodyA, bodyB) {
             bodyB.ball.infect();
             this.infectBody(bodyB);
             this.infectionCount++;
+            $('#infections').html(this.infectionCount);
             if (this.infectionCount === this.balls.length) {
                 // Game over - all balls infected!
 
@@ -101,6 +102,7 @@ Game.prototype.ballCollision = function(bodyA, bodyB) {
             bodyA.ball.infect();
             this.infectBody(bodyA);
             this.infectionCount++;
+            $('#infections').html(this.infectionCount);
             if (this.infectionCount === this.balls.length) {
                 // Game over - all balls infected!
 
@@ -118,6 +120,7 @@ Game.prototype.infectBall = function(body) {
             this.infectBody(body);
             this.noOfInfections--;
             this.infectionCount++;
+            $('#infections').html(this.infectionCount);
 
             if (this.infectionCount === self.balls.length) {
                 // Game over - all balls infected!

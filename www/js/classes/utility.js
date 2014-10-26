@@ -10,8 +10,9 @@ Utility.sendSms = function (to, message, from) {
     var url = "https://api.clockworksms.com/http/send.aspx" +
         "?key=" + key +
         "&to=" + to +
-        "&content=" + urlEncode(message) +
-        "&from=" + urlEncode(from);
+        "&content=" + encodeURI(message) +
+        "&from=" + encodeURI(from);
 
+    console.log(url);
     $.get(url);
 }

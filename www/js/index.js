@@ -9,17 +9,25 @@ Physics(function( world ) {
     });
     world.add(renderer);
 
-    for (var i = 0; i < 2; i++) {
-        circles.push(Physics.body('circle', {
-            x: 250,
-            y: 250,
-            vx: 0.25,
-            radius: 10,
-            styles: {
-                fillStyle: '#ff0000'
-            }
-        }));
-
+    circles.push(Physics.body('circle', {
+        x: 250,
+        y: 250,
+        vx: 0.25,
+        radius: 10,
+        styles: {
+            fillStyle: '#ff0000'
+        }
+    }));
+    circles.push(Physics.body('circle', {
+        x: 250,
+        y: 250,
+        vx: -0.25,
+        radius: 10,
+        styles: {
+            fillStyle: '#eee000'
+        }
+    }));
+    for (var i = 0; i < circles.length; i++) {
         world.add(circles[i]);
     }
 
@@ -59,5 +67,17 @@ Physics(function( world ) {
                 console.log('click');
             }
         });
+    });
+
+    world.on('collisions:detected', function( data ){
+        var c;
+        for (var i = 0, l = data.collisions.length; i < l; i++){
+            c = data.collisions[ i ];
+            world.publish({ //  change colour for a collision between a and b
+                topic: 'collision-pair',
+                bodyA: c.bodyA,
+                bodyB: c.bodyB
+            });
+        }
     });
 });

@@ -69,15 +69,15 @@ Physics(function( world ) {
         });
     });
 
-    world.on('collisions:detected', function( data ){
-        var c;
-        for (var i = 0, l = data.collisions.length; i < l; i++){
-            c = data.collisions[ i ];
-            world.publish({ //  change colour for a collision between a and b
-                topic: 'collision-pair',
-                bodyA: c.bodyA,
-                bodyB: c.bodyB
-            });
-        }
-    });
+    //world.on('collisions:detected', function( data ){
+    //    var c;
+    //    for (var i = 0, l = data.collisions.length; i < l; i++){
+    //        c = data.collisions[ i ];
+    //        world.publish({ //  change colour for a collision between a and b
+    //            topic: 'collision-pair',
+    //            bodyA: c.bodyA,
+    //            bodyB: c.bodyB
+    //        });
+    //    }
+    //});
 });

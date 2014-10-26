@@ -14,6 +14,9 @@
         <div id="test"><canvas id="viewport"></canvas></div>
         <div id="countdown-timer"></div>
         <div id="infections">Infections: 9001</div>
+        <button id="start" style="position: absolute; z-index: 2;">Start</button>
+        <div>Time: <span id="timeRemaining">0</span></div>
+
         <div id="start-countdown-timer timer"></div>
         <div id="start-button"><button onclick="javascript:start()">Start</button></div>
         <div id="end-of-game"></div>
@@ -21,7 +24,10 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/physicsjs-0.6.0/physicsjs-full-0.6.0.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/classes/ball.js"></script>
+        <script type="text/javascript" src="js/classes/game.js"></script>
+        <script type="text/javascript" src="js/classes/utility.js"></script>
+        <script type="text/javascript" src="js/physics.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

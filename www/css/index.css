@@ -3,6 +3,10 @@ canvas {
     display: inline-block;
 }
 
+body {
+	margin: 0;
+}
+
 div#test {
     position: relative;
     width: 100%;

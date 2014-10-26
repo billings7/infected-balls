@@ -27,6 +27,13 @@ Ball.prototype.containsPoint = function(x, y) {
     return ((this.radius * this.radius) > ((xDiff * xDiff) + (yDiff * yDiff)));
 };
 
+Ball.prototype.collidesWith = function(otherBall) {
+    var xdiff = this.position.x - otherBall.position.x,
+        ydiff = this.position.y - otherBall.position.y;
+
+    return ((xdiff * xdiff) + (ydiff * ydiff)) <= (otherBall.radius + this.radius);
+};
+
 Ball.prototype.bounce = function () {
     // TODO;
 };

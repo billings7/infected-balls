@@ -169,11 +169,11 @@ Game.prototype.endGame = function() {
 
         if(this.infectionCount < this.balls.length) {
             // Bad end
-            Utility.sendSms('44REDACTED', 'You spread bad! Try again soon.', 'Infected');
+            //Utility.sendSms('44REDACTED', 'You spread bad! Try again soon.', 'Infected');
             $('#bad-end').css({visibility: 'visible'});
         } else {
             // Good end
-            Utility.sendSms('44REDACTED', 'You spread good! Congratulations.', 'Infected');
+            //Utility.sendSms('44REDACTED', 'You spread good! Congratulations.', 'Infected');
             $('#good-end').css({visibility: 'visible'});
         }
 

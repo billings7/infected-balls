@@ -5634,7 +5634,7 @@ Physics.geometry('circle', function( parent ){
 
             this.options.defaults( defaults );
             this.options.onChange(function( opts ){
-                this.radius = opts.radius;
+                self.radius = opts.radius;
             });
             this.options( options );
 

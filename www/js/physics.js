@@ -15,7 +15,7 @@ PhysicsSystem.fromGame = function(game) {
 
         PhysicsSystem.world.add(self.renderer);
 
-        var bounds = Physics.aabb(0, 0, 500, 500);
+        var bounds = Physics.aabb(0, 0, $(window).width(), $(window).height());
 
         PhysicsSystem.world.add(Physics.behavior('edge-collision-detection', {
             aabb: bounds,

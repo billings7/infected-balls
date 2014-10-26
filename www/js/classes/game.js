@@ -57,7 +57,7 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
                     x: Utility.random(0, 0.5),
                     y: Utility.random(0, 0.5)
                 }, Utility.random(0.3, 0.7),
-                15);
+                25);
         }
 
         if(ballTries < ballTryLimit) {

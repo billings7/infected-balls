@@ -13,7 +13,7 @@
     var game = new Game(viewport);
     PhysicsSystem.fromGame(game);
 
-    game.init(10, 30, 3);
+    game.init(10, 12, 2);
 
     $('#start').click(function() {
         game.start();

@@ -10,9 +10,11 @@
     <content src="index.html" />
     <access origin="*" />
     <platform name="android">
-        <icon src="icons/red.png" density="ldpi" />
-        <icon src="icons/red.png" density="mdpi" />
-        <icon src="icons/red.png" density="hdpi" />
-        <icon src="icons/red.png" density="xhdpi" />
+        <icon src="www/icons/red.png" density="ldpi" />
+        <icon src="www/icons/red.png" density="mdpi" />
+        <icon src="www/icons/red.png" density="hdpi" />
+        <icon src="www/icons/red.png" density="xhdpi" />
     </platform>
+    <preference name="Fullscreen" value="true" />
+    <preference name="Orientation" value="landscape" />
 </widget>

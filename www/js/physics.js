@@ -78,7 +78,7 @@ PhysicsSystem.fromGame = function(game) {
             PhysicsSystem.bodies.forEach(function (body) {
                 var dx = e.offsetX - body.state.pos.x;
                 var dy = e.offsetY - body.state.pos.y;
-                var rad = body.geometry.radius * 3;
+                var rad = body.geometry.radius * 1.5;
 
                 if ((dx * dx + dy * dy) < (rad * rad)) {
                     game.infectBall(body);

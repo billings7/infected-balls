@@ -1,6 +1,6 @@
 (function() {
     Physics(PhysicsSystem);
-
+    var firstGame = true;
     var hei = $(window).height();
     var wid = $(window).width();
 
@@ -16,7 +16,14 @@
     game.init(10, 30, 3);
 
     $('#start').click(function() {
+        if(!firstGame) {
+            game.init(10, 30, 3);
+        }
+        firstGame = false;
         game.start();
-        $('#start').hide();
+        $('#good-end').css({visibility: 'hidden'});
+        $('#bad-end').css({visibility: 'hidden'});
+
+        $('.start').hide();
     });
 })();

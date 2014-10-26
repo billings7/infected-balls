@@ -13,6 +13,11 @@ PhysicsSystem.fromGame = function(game) {
             height: height
         });
 
+        // Remove any existing bodies
+        PhysicsSystem.bodies.forEach(function(body) {
+            PhysicsSystem.world.remove(body);
+        });
+
         PhysicsSystem.world.add(self.renderer);
 
         var bounds = Physics.aabb(0, 0, $(window).width(), $(window).height());
@@ -86,5 +91,6 @@ PhysicsSystem.fromGame = function(game) {
 
     game.onEnd(function() {
         Physics.util.ticker.stop();
+        $('.start').show();
     });
 };

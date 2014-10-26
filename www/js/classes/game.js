@@ -38,6 +38,9 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
         ballTries = 0,
         ball;
 
+    this.balls = [];
+    this.infectionCount = 0;
+
     this.timeLimit = timeLimit;
     this.noOfInfections = noOfInfections;
     $('#infectionsLeft').text(this.noOfInfections);
@@ -61,6 +64,9 @@ Game.prototype.init = function(timeLimit, noOfBalls, noOfInfections) {
             this.balls.push(ball);
         }
     }
+
+    $('#infections').text(this.infectionCount);
+    $('#infectionsLeft').text(this.noOfInfections);
 
     this.initFns.forEach(function(fn) {
         fn(self.width, self.height, self.balls);
@@ -137,7 +143,10 @@ Game.prototype.addInfected = function() {
 };
 
 Game.prototype.update = function() {
-    if(new Date() >= this.endTime) {
+    var date = new Date();
+    if(date >= this.endTime) {
+        this.endTime = date;
+        $('#timeRemaining').text(0.0.toFixed(3));
         this.endGame();
     } else {
         $('#timeRemaining').text(this.timeLeft().toFixed(3));

@@ -8,6 +8,7 @@ body {
     font-family: Verdana;
     font-weight: bold;
 	margin: 0;
+	overflow: hidden;
 }
 
 div#test {

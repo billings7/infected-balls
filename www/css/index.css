@@ -1,4 +1,60 @@
+canvas {
+
+    display: inline-block;
+}
+
 body {
 	margin: 0;
 	overflow: hidden;
+}
+
+div#test {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+div {
+    position: absolute;
+}
+
+#countdown-timer {
+    display: block;
+    top: 0;
+    margin: 0 auto;
+    height: 5rem;
+    width: 10rem;
+}
+
+#infections {
+    display: block;
+    top: 0;
+    right: 0;
+    height: 5rem;
+    width: 10rem;
+}
+
+#start-countdown-timer {
+    display: block;
+    top: 0;
+    left: 50%;
+    height: 5rem;
+    width: 10rem;
+    visibility: hidden;
+}
+
+#start-button {
+    display: inline-block;
+    top: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#end-of-game {
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
 }

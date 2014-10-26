@@ -7,19 +7,21 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
         <title>Hello World</title>
     </head>
     <body>
+        <canvas id="viewport"></canvas>
+        <div id="HUD">
+            <div class="infections">Infections: <span id="infections">0</span></div>
+            <div class="timeRemaining">Time Remaining: <span id="timeRemaining">0</span></div>
+            <div class="start">
+                <button id="start">Start</button>
+            </div>
 
-        <div id="test"><canvas id="viewport"></canvas></div>
-        <div id="countdown-timer"></div>
-        <div id="infections">Infections: 9001</div>
-        <button id="start" style="position: absolute; z-index: 2;">Start</button>
-        <div>Time: <span id="timeRemaining">0</span></div>
-
-        <div id="start-countdown-timer timer"></div>
-        <div id="start-button"><button onclick="javascript:start()">Start</button></div>
-        <div id="end-of-game"></div>
+            <div id="timeRemainingOverlay"></div>
+            <div id="endOfGameOverlay"></div>
+        </div>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
